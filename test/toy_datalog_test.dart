@@ -36,6 +36,18 @@ void main() {
     );
   });
 
+  test('querySingleIndexed()', () {
+    final db = createDb(exampleTriples);
+    expect(
+      querySingleIndexed(("?movieId", "movie/year", 1987), db, {}),
+      [
+        {"?movieId": 202},
+        {"?movieId": 203},
+        {"?movieId": 204}
+      ],
+    );
+  });
+
   test('queryWhere()', () {
     expect(
       queryWhere(
